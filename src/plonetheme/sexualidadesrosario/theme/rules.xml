@@ -11,7 +11,7 @@
   <rules css:if-content="body.userrole-anonymous">
     <theme href="index.html" />
 
-    <!-- include view /about on homepage only -->
+    <!-- include /about on homepage only -->
     <replace css:theme-children="#about h2"
       css:content-children="#content h1" href="/about"
       css:if-content="body.template-document_view.section-front-page" />
@@ -19,6 +19,13 @@
       css:content-children="#content #parent-fieldname-text" href="/about" 
       css:if-content="body.template-document_view.section-front-page" />
 
+    <!-- include /register on homepage only -->
+    <replace css:theme-children="#register h2"
+      css:content-children="#content h1" href="/register"
+      css:if-content="body.template-document_view.section-front-page" />
+    <replace css:theme="#register form" 
+      css:content-children="#content #parent-fieldname-text" href="/register" 
+      css:if-content="body.template-document_view.section-front-page" />
 
   </rules>
 
