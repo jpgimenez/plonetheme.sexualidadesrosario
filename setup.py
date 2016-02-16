@@ -48,6 +48,7 @@ setup(
         'z3c.jbot',
         'plone.app.theming',
         'plone.app.themingplugins',
+        'Products.PloneFormGen',
     ],
     extras_require={
         'test': [
