@@ -5,6 +5,8 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude">
 
+  <theme href="index.html" />
+
   <after css:theme-children="head" css:content="head link" />
   <after css:theme-children="head" css:content="head script" />
 
@@ -22,10 +24,7 @@
   <!-- Copy over the id/class attributes on the body tag. This is important for per-section styling -->
   <copy attributes="*" css:content="body" css:theme="body" />
 
-
-  <rules css:if-content="body.userrole-anonymous:not(.section-front-page)">
-    <xi:include href="++theme++barceloneta/rules.xml" />
-    <theme href="index.html" />
+  <rules css:if-content="body:not(.section-front-page)">
 
     <!-- move global nav -->
     <replace css:theme="#mainNav .navbar-brand a" css:content-children="#portal-globalnav li:nth-child(1)" />
@@ -39,8 +38,6 @@
   </rules>
 
   <rules css:if-content="body.userrole-authenticated:not(.section-front-page)">
-    <xi:include href="++theme++barceloneta/rules.xml" />
-    <theme href="index.html" />
 
     <!-- Full-width breadcrumb -->
     <after css:theme="header" css:content="#viewlet-above-content" />
@@ -51,8 +48,6 @@
   </rules>
 
   <rules css:if-content="body.userrole-anonymous.section-front-page">
-    <theme href="index.html" />
-
     
     <!-- include /about on homepage only -->
     <replace css:theme-children="#about h2"
