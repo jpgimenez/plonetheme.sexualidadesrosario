@@ -2498,71 +2498,66 @@ fieldset[disabled] .link-parent.active {
 .plone-breadcrumb ol > #breadcrumbs-current {
   color: #777777;
 }
-.listingBar {
+.pagination {
   display: inline-block;
   padding: 0;
   list-style: none;
   margin: 20px 0;
 }
-.listingBar > li {
-  display: inline;
-  line-height: 0;
+.pagination li {
+  display: block;
+  float: left;
   position: relative;
   padding: 0;
   font-weight: 300;
 }
-.listingBar > li a {
-  position: relative;
-  float: left;
+.pagination li > a,
+.pagination li > span {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
   color: #007bb1;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5 !important;
   margin-left: -1px;
 }
-.listingBar > li:first-child > a {
+.pagination li:first-child > a {
   margin-left: 0;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
 }
-.listingBar > li:last-child > a {
+.pagination li:last-child > a {
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
 }
-.listingBar > li a:hover,
-.listingBar > li a:focus {
+.pagination li > a:hover,
+.pagination li > a:focus {
   color: #004665;
   background-color: #f2f1f1;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5 !important;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.listingBar > .active > a,
-.listingBar > .active > a:hover,
-.listingBar > .active > a:focus {
+.pagination li.active > span {
   z-index: 2;
   font-weight: 400;
   color: #fff;
   background-color: #007bb1;
-  border: #007bb1;
+  border: 1px solid #007bb1 !important;
   cursor: default;
 }
-.listingBar > .disabled > a,
-.listingBar > .disabled > a:hover,
-.listingBar > .disabled > a:focus {
+.pagination li.disabled > span {
   color: #cccccc;
   background-color: #fcfcfd;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5 !important;
   cursor: default;
 }
 @media (max-width: 480px) {
-  .listingBar li {
+  .pagination li {
     display: none;
   }
-  .listingBar li.previous,
-  .listingBar li.next {
+  .pagination li.previous,
+  .pagination li.next {
     display: inline;
   }
 }
@@ -3650,10 +3645,14 @@ body#visual-portal-wrapper.pat-plone #edit-zone .contenttype-news-item:after {
 .plone-modal .plone-modal-dialog .plone-modal-body {
   padding: 12px;
 }
+.plone-modal .plone-modal-dialog .plone-modal-body .modal-image {
+  text-align: center;
+}
 .plone-modal .plone-modal-dialog .plone-modal-footer {
   border-top: 1px solid #cccccc;
   background: #fcfcfd;
   box-shadow: inset 0 10px 10px -10px rgba(0, 0, 0, 0.05);
+  background-color: transparent;
   padding: 12px;
   text-align: right;
 }
@@ -5050,6 +5049,9 @@ p {
 .bg-primary {
   background-color: #f55600;
 }
+.bg-secondary {
+  background-color: #d2ffd0;
+}
 .bg-dark {
   background-color: #222;
   color: white;
@@ -5057,7 +5059,7 @@ p {
 .text-faded {
   color: rgba(255, 255, 255, 0.7);
 }
-section {
+body.userrole-anonymous.section-front-page section {
   padding: 100px 0;
 }
 aside {
@@ -5097,7 +5099,7 @@ aside {
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
-  color: #f55600 !important;
+  color: #f55600;
   background-color: transparent;
 }
 .navbar-default .nav > li.active > a:hover,
@@ -5145,7 +5147,7 @@ aside {
     color: #f55600;
   }
 }
-header {
+body.userrole-anonymous.section-front-page header {
   position: relative;
   width: 100%;
   min-height: auto;
@@ -5159,32 +5161,32 @@ header {
   text-align: center;
   color: white;
 }
-header .header-content {
+body.userrole-anonymous.section-front-page header .header-content {
   position: relative;
   text-align: center;
   padding: 100px 15px 100px;
   width: 100%;
 }
-header .header-content .header-content-inner h1 {
+body.userrole-anonymous.section-front-page header .header-content .header-content-inner h1 {
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
 }
-header .header-content .header-content-inner hr {
+body.userrole-anonymous.section-front-page header .header-content .header-content-inner hr {
   margin: 30px auto;
 }
-header .header-content .header-content-inner p {
+body.userrole-anonymous.section-front-page header .header-content .header-content-inner p {
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   margin-bottom: 50px;
 }
 @media (min-width: 768px) {
-  header {
+  body.userrole-anonymous.section-front-page header {
     min-height: 100%;
   }
-  header .header-content {
+  body.userrole-anonymous.section-front-page header .header-content {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -5192,12 +5194,12 @@ header .header-content .header-content-inner p {
     transform: translateY(-50%);
     padding: 0 50px;
   }
-  header .header-content .header-content-inner {
+  body.userrole-anonymous.section-front-page header .header-content .header-content-inner {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
   }
-  header .header-content .header-content-inner p {
+  body.userrole-anonymous.section-front-page header .header-content .header-content-inner p {
     font-size: 18px;
     max-width: 80%;
     margin-left: auto;
@@ -5478,6 +5480,24 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #222;
+}
+header {
+  background-image: none;
+}
+body.userrole-anonymous.section-front-page header {
+  background-image: url('img/header.jpg');
+}
+.formControls {
+  background-color: transparent;
+}
+.navbar-default.affix-top .navbar-header .navbar-brand a {
+  color: rgba(255, 255, 255, 0.7);
+}
+#page-top {
+  margin-top: 50px;
+}
+section#content {
+  padding-top: 20px;
 }
 /* Inspect Barceloneta theme (and its less-folder) for more... */
 /*# sourceMappingURL=++theme++plonetheme.sexualidadesrosario/styles.css.map */

@@ -5,27 +5,78 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xi="http://www.w3.org/2001/XInclude">
 
-  <!-- Import Barceloneta rules -->
-  <xi:include href="++theme++barceloneta/backend.xml" />
+  <after css:theme-children="head" css:content="head link" />
+  <after css:theme-children="head" css:content="head script" />
 
-  <rules css:if-content="body.userrole-anonymous">
+  <!-- Attributes -->
+  <copy attributes="*" css:theme="html" css:content="html" />
+  <!-- Base tag -->
+  <before css:theme="title" css:content="base" />
+  <!-- Title -->
+  <replace css:theme="title" css:content="title" />
+  <!-- Pull in Plone Meta -->
+  <after css:theme-children="head" css:content="head meta" />
+  <!-- Don't use Plone icons, use the theme's -->
+  <drop css:content="head link[rel='apple-touch-icon']" />
+  <drop css:content="head link[rel='shortcut icon']" />
+  <!-- Copy over the id/class attributes on the body tag. This is important for per-section styling -->
+  <copy attributes="*" css:content="body" css:theme="body" />
+
+
+  <rules css:if-content="body.userrole-anonymous:not(.section-front-page)">
+    <xi:include href="++theme++barceloneta/rules.xml" />
     <theme href="index.html" />
 
+    <!-- move global nav -->
+    <replace css:theme="#mainNav .navbar-brand a" css:content-children="#portal-globalnav li:nth-child(1)" />
+    <replace css:theme-children="#mainNav .nav" css:content="#portal-globalnav li:nth-child(n+2)" method="raw" />
+
+    <replace css:theme="#content div div div" css:content="#portal-column-content" />
+    <drop css:theme="header" />
+    <drop css:theme="#about" />
+    <drop css:theme="#register" />
+
+  </rules>
+
+  <rules css:if-content="body.userrole-authenticated:not(.section-front-page)">
+    <xi:include href="++theme++barceloneta/rules.xml" />
+    <theme href="index.html" />
+
+    <!-- Full-width breadcrumb -->
+    <after css:theme="header" css:content="#viewlet-above-content" />
+    <after css:theme-children="header">
+        <style>.plone-breadcrumb {margin-top: 0;}</style>
+    </after>
+
+  </rules>
+
+  <rules css:if-content="body.userrole-anonymous.section-front-page">
+    <theme href="index.html" />
+
+    
     <!-- include /about on homepage only -->
     <replace css:theme-children="#about h2"
-      css:content-children="#content h1" href="/about"
+      css:content-children="#content h1" href="/about?ajax_load=1"
       css:if-content="body.template-document_view.section-front-page" />
     <replace css:theme="#about .text-faded" 
-      css:content-children="#content #parent-fieldname-text" href="/about" 
+      css:content-children="#content #parent-fieldname-text" href="/about?ajax_load=1" 
       css:if-content="body.template-document_view.section-front-page" />
 
     <!-- include /register on homepage only -->
+<!--
     <replace css:theme-children="#register h2"
-      css:content-children="#content h1" href="/register"
+      css:content-children="#content h1" href="/inscriptos/++add++Asistente"
       css:if-content="body.template-document_view.section-front-page" />
     <replace css:theme="#register form" 
-      css:content-children="#content #parent-fieldname-text" href="/register" 
+      css:content-children="#content-core" href="/inscriptos/++add++Asistente"
       css:if-content="body.template-document_view.section-front-page" />
+-->      
+    <drop css:theme="#register" />
+
+    <!-- Footer -->
+<!--    
+    <after css:theme="#contact" css:content="#portal-footer-signature" />
+-->
 
   </rules>
 

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,8 +34,8 @@
 
 </head>
 
-<body id="page-top">
-
+<body>
+    <div id="page-top"></div>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,7 +46,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Inicio</a>
+                <div class="navbar-brand">
+                    <a class="page-scroll" href="#page-top">Inicio</a>
+                </div>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,7 +58,7 @@
                         <a class="page-scroll" href="#about">Acerca del evento</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#register">Inscripción</a>
+                        <a class="page-scroll" href="../inscriptos/++add++Asistente">Inscripción</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contacto</a>
@@ -94,18 +96,45 @@
         </div>
     </section>
 
-    <section id="register">
+    <section id="register"  class="bg-secondary">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Inscripción</h2>
                     <hr class="primary">
+                    <div class="alert alert-success hidden">
+                      <strong>Gracias!</strong> Información enviada.
+                    </div>
                 </div>
             </div>
         </div>
+        <script>
+            $(function(){
+                $('#register form').on('submit', function(e){
+                  e.preventDefault();
+                  data = $('#register form').serialize() + '&form.buttons.save=Save';
+                  action = $('#register form').attr('action');
+                  $.post(action, 
+                     data,
+                     function(data, status, xhr){
+                       $('#page-top').html(data);
+                       // do something here with response;
+                       history.pushState(null, null, window.location.href);
+                       if( $('<div />').html(data).find('.portalMessage.error').length == 0 ) {
+                           $('#register .alert-success').toggleClass('hidden');
+                       };
+                       $('#register #form-wrapper').html($('<div />').html(data).find('#content-core').html());
+                       var $anchor = $('#register');                       
+                       $('html, body').stop().animate({
+                            scrollTop: ($anchor.offset().top - 50)
+                       }, 1250, 'easeInOutExpo');                       
+                     });
+                });
+            });
+        </script>        
         <div class="container">
             <div class="row">
-              <div class="col-lg-8 col-lg-offset-2 text-center">
+              <div id="form-wrapper" class="col-lg-8 col-lg-offset-2">
                 <form id="form" enctype="multipart/form-data" method="post"
                     action="#" class="rowlike enableUnloadProtection" 
                     data-pat-autotoc="levels: legend; section: fieldset; className: autotabs">
@@ -118,26 +147,30 @@
                             <span title="Obligatorio" class="required horizontal">&nbsp;</span>
                         </label>
                         <select size="1" class="select-widget required choice-field"
-                        name="form.widgets.tipo_documento:list" id="form-widgets-tipo_documento"><option value="Documento Nacional de Identidad" id="form-widgets-tipo_documento-0">Documento Nacional de Identidad</option><option value="Pasaporte Extranjero" id="form-widgets-tipo_documento-1">Pasaporte Extranjero</option><option value="Otro Documento" id="form-widgets-tipo_documento-2">Otro Documento</option></select><input type="hidden" value="1" name="form.widgets.tipo_documento-empty-marker"></div>
-
-                                          
-                                      
-                                  
-                                      
-                                          
-                                              <div id="formfield-form-widgets-title" data-fieldname="form.widgets.title" class="field pat-inlinevalidation kssattr-fieldname-form.widgets.title empty" data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}">
-    <label class="horizontal" for="form-widgets-title">
-        Número de Documento
-
-        <span title="Obligatorio" class="required horizontal">&nbsp;</span>
-
-        
-    </label>
-
-    <div class="fieldErrorBox"></div>
-
-    
-    <input type="text" value="" class="text-widget required textline-field" name="form.widgets.title" id="form-widgets-title" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-position: right center; cursor: auto;"></div>
+                            name="form.widgets.tipo_documento:list"
+                            id="form-widgets-tipo_documento">
+                                <option value="Documento Nacional de Identidad" 
+                                    id="form-widgets-tipo_documento-0">Documento Nacional de Identidad</option>
+                                <option value="Pasaporte Extranjero" 
+                                    id="form-widgets-tipo_documento-1">Pasaporte Extranjero</option>
+                                <option value="Otro Documento" 
+                                    id="form-widgets-tipo_documento-2">Otro Documento</option>
+                        </select>
+                        <input type="hidden" value="1" name="form.widgets.tipo_documento-empty-marker">
+                    </div>
+                    <div id="formfield-form-widgets-title"
+                        data-fieldname="form.widgets.title" 
+                        class="field pat-inlinevalidation kssattr-fieldname-form.widgets.title empty">
+                        <label class="horizontal" for="form-widgets-title">
+                            Número de Documento
+                            <span title="Obligatorio" class="required horizontal">&nbsp;</span>
+                        </label>
+                        <div class="fieldErrorBox"></div>
+                        <input type="text" value="" 
+                            class="text-widget required textline-field" 
+                            name="form.widgets.title" 
+                            id="form-widgets-title" 
+                            style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-position: right center; cursor: auto;"></div>
 
                                           
                                       
@@ -231,6 +264,15 @@
       </div>
     </section>
 
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact">
         <div class="container">
             <div class="row">
@@ -241,7 +283,7 @@
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                    <p>341 315 6707</p>
+                    <p><a href="tel:+5493413156707">341 315 6707</a></p>
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
@@ -265,6 +307,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+    <script src="utils.js"></script>
 
 </body>
 

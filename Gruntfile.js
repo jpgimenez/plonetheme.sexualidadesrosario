@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         watch: {
             scripts: {
                 files: ['src/plonetheme/sexualidadesrosario/theme/styles.less',
-                        'src/plonetheme/sexualidadesrosario/theme/startbootstrap-sexualidadesrosario/less/*.less'],
+                        'src/plonetheme/sexualidadesrosario/theme/less/*.less'],
                 tasks: ['less']
             }
         },
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
             html: {
                 bsFiles: {
                     src : ['src/plonetheme/sexualidadesrosario/theme/styles.less',
-                           'src/plonetheme/sexualidadesrosario/theme/startbootstrap-sexualidadesrosario/less/*.less']
+                           'src/plonetheme/sexualidadesrosario/theme/less/*.less']
                 },
                 options: {
                     watchTask: true,
@@ -50,7 +50,7 @@ module.exports = function (grunt) {
             plone: {
                 bsFiles: {
                     src : ['src/plonetheme/sexualidadesrosario/theme/styles.less',
-                           'src/plonetheme/sexualidadesrosario/theme/startbootstrap-sexualidadesrosario/less/*.less']
+                           'src/plonetheme/sexualidadesrosario/theme/less/*.less']
                 },
                 options: {
                     watchTask: true,

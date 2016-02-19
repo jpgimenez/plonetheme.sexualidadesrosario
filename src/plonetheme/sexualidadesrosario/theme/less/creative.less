@@ -50,6 +50,10 @@ p {
     background-color: @theme-primary;
 }
 
+.bg-secondary {
+    background-color: @theme-secondary;
+}
+
 .bg-dark {
     background-color: @theme-dark;
     color: white;
@@ -59,8 +63,10 @@ p {
     color: fade(white, 70%);
 }
 
-section {
-    padding: 100px 0;
+body.userrole-anonymous.section-front-page {
+    section {
+        padding: 100px 0;
+    }
 }
 
 aside {
@@ -103,7 +109,7 @@ aside {
             &.active {
                 > a,
                 > a:focus {
-                    color: @theme-primary !important;
+                    color: @theme-primary;
                     background-color: transparent;
                     &:hover {
                         background-color: transparent;
@@ -153,57 +159,59 @@ aside {
 
 // Homepage Header
 
-header {
-    position: relative;
-    width: 100%;
-    min-height: auto;
-    .background-cover;
-    background-position: center;
-    background-image: url('img/header.jpg');
-    background-repeat: no-repeat;
-    text-align: center;
-    color: white;
-    .header-content {
+body.userrole-anonymous.section-front-page {
+    header {
         position: relative;
-        text-align: center;
-        padding: 100px 15px 100px;
         width: 100%;
-        .header-content-inner {
-            h1 {
-                font-weight: 700;
-                text-transform: uppercase;
-                margin-top: 0;
-                margin-bottom: 0;
-            }
-            hr {
-                margin: 30px auto;
-            }
-            p {
-                font-weight: 300;
-                color: fade(white, 70%);
-                font-size: 16px;
-                margin-bottom: 50px;
+        min-height: auto;
+        .background-cover;
+        background-position: center;
+        background-image: url('img/header.jpg');
+        background-repeat: no-repeat;
+        text-align: center;
+        color: white;
+        .header-content {
+            position: relative;
+            text-align: center;
+            padding: 100px 15px 100px;
+            width: 100%;
+            .header-content-inner {
+                h1 {
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+                hr {
+                    margin: 30px auto;
+                }
+                p {
+                    font-weight: 300;
+                    color: fade(white, 70%);
+                    font-size: 16px;
+                    margin-bottom: 50px;
+                }
             }
         }
-    }
-    @media (min-width: 768px) {
-        min-height: 100%;
-        .header-content {
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-            padding: 0 50px;
-            .header-content-inner {
-                max-width: 1000px;
-                margin-left: auto;
-                margin-right: auto;
-                p {
-                    font-size: 18px;
-                    max-width: 80%;
+        @media (min-width: 768px) {
+            min-height: 100%;
+            .header-content {
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+                padding: 0 50px;
+                .header-content-inner {
+                    max-width: 1000px;
                     margin-left: auto;
                     margin-right: auto;
+                    p {
+                        font-size: 18px;
+                        max-width: 80%;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
                 }
             }
         }

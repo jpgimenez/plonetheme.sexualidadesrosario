@@ -1,5 +1,31 @@
 /* Import Barceloneta styles */
-@import "../../../../parts/omelette/plonetheme/barceloneta/theme/less/barceloneta.plone.local.less";
+@import url("https://raw.githubusercontent.com/plone/plonetheme.barceloneta/master/plonetheme/barceloneta/theme/less/barceloneta.plone.local.less");
 @import "less/creative.less";
+
+header {
+    background-image: none;
+}
+
+body.userrole-anonymous.section-front-page {
+    header {
+        background-image: url('img/header.jpg');
+    }
+}
+
+.formControls {
+    background-color: transparent;
+}
+
+.navbar-default.affix-top .navbar-header .navbar-brand a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#page-top {
+    margin-top: 50px;
+}
+
+section#content {
+    padding-top: 20px;
+}
 
 /* Inspect Barceloneta theme (and its less-folder) for more... */
