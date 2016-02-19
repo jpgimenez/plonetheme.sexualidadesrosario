@@ -26,7 +26,8 @@ class TestSetup(unittest.TestCase):
         from plonetheme.sexualidadesrosario.interfaces import (
             IPlonethemeSexualidadesrosarioLayer)
         from plone.browserlayer import utils
-        self.assertIn(IPlonethemeSexualidadesrosarioLayer, utils.registered_layers())
+        self.assertIn(IPlonethemeSexualidadesrosarioLayer,
+                      utils.registered_layers())
 
 
 class TestUninstall(unittest.TestCase):
@@ -45,6 +46,8 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that IPlonethemeSexualidadesrosarioLayer is removed."""
-        from plonetheme.sexualidadesrosario.interfaces import IPlonethemeSexualidadesrosarioLayer
+        from plonetheme.sexualidadesrosario.interfaces import \
+            IPlonethemeSexualidadesrosarioLayer
         from plone.browserlayer import utils
-        self.assertNotIn(IPlonethemeSexualidadesrosarioLayer, utils.registered_layers())
+        self.assertNotIn(IPlonethemeSexualidadesrosarioLayer,
+                         utils.registered_layers())
