@@ -34,6 +34,8 @@
     <drop css:theme="header" />
     <drop css:theme="#about" />
     <drop css:theme="#register" />
+    <drop css:theme="#organizers" />
+    <drop css:theme="#keynotes" />
 
   </rules>
 
@@ -44,8 +46,6 @@
     <after css:theme-children="header">
         <style>.plone-breadcrumb {margin-top: 0;}</style>
     </after>
-    <drop css:theme="#organizers" />
-    <drop css:theme="#keynotes" />
 
   </rules>
 
