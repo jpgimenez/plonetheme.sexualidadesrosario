@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class FolderLeadImages(BrowserView):
-    """ 
+    """
     """
 
     @property
