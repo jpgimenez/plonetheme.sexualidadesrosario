@@ -36,6 +36,7 @@
     <drop css:theme="#register" />
     <drop css:theme="#organizers" />
     <drop css:theme="#keynotes" />
+    <drop css:theme="#sponsors" />
 
   </rules>
 
@@ -63,6 +64,8 @@
       css:content=".leadImage" href="/organizers/@@folder_lead_images_fluid?ajax_load=1" />
     <append css:theme="#keynotes .lead_images .row" 
       css:content=".leadImage" href="/keynotes/@@folder_lead_images?ajax_load=1" />
+    <append css:theme="#sponsors .container-fluid .row" 
+      css:content=".leadImage" href="/sponsors/@@folder_lead_images_fluid?ajax_load=1" />
 
     <!-- include /register on homepage only -->
 <!--
