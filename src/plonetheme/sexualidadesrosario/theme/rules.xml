@@ -44,6 +44,8 @@
     <after css:theme-children="header">
         <style>.plone-breadcrumb {margin-top: 0;}</style>
     </after>
+    <drop css:theme="#organizers" />
+    <drop css:theme="#keynotes" />
 
   </rules>
 
