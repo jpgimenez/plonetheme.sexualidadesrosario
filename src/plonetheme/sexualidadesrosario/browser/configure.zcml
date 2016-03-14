@@ -17,4 +17,21 @@
       directory="static"
       />
 
+
+  <browser:page
+    name="folder_lead_images"
+    for="*"
+    class=".views.FolderLeadImages"
+    permission="zope2.View"
+    template="templates/folder_lead_images.pt"
+    />
+
+  <browser:page
+    name="folder_lead_images_fluid"
+    for="*"
+    class=".views.FolderLeadImages"
+    permission="zope2.View"
+    template="templates/folder_lead_images_fluid.pt"
+    />
+
 </configure>

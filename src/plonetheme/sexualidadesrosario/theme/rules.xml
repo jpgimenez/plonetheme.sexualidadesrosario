@@ -57,6 +57,11 @@
       css:content-children="#content #parent-fieldname-text" href="/about?ajax_load=1" 
       css:if-content="body.template-document_view.section-front-page" />
 
+    <append css:theme="#organizers .container-fluid .row" 
+      css:content=".leadImage" href="/organizers/@@folder_lead_images_fluid?ajax_load=1" />
+    <append css:theme="#keynotes .lead_images .row" 
+      css:content=".leadImage" href="/keynotes/@@folder_lead_images?ajax_load=1" />
+
     <!-- include /register on homepage only -->
 <!--
     <replace css:theme-children="#register h2"
@@ -67,6 +72,7 @@
       css:if-content="body.template-document_view.section-front-page" />
 -->      
     <drop css:theme="#register" />
+    <drop css:theme="#content" />
 
     <!-- Footer -->
 <!--    
